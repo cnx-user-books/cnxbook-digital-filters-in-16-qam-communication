@@ -1,0 +1,135 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Digital Filtering</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m41715</md:content-id>
+  <md:title>Digital Filtering</md:title>
+  <md:abstract/>
+  <md:uuid>b2434617-a658-48b9-aa52-265e3cf5fbf0</md:uuid>
+</metadata>
+
+<content>
+    <section id="id1167696952114">
+      <title>Purpose of Upsampling in Digital Filters in Communication</title>
+      <para id="id1167695422847"> In digital communications filters are important in the process of upsampling. Upsampling is required for transmission because we want the signal's frequency representation to be narrow and confined to frequencies around the carrier frequency. By upsampling the signal, the frequency response of the signal to be transmitted gets compressed and becomes band limited to a significantly smaller range of frequencies, which is necessary for transmission. </para>
+      <figure id="id1167694586718">
+        <media id="id1167694586718_media" alt="">
+          <image mime-type="image/jpg" src="../../media/graphics1-1187.jpg" id="id1167694586718__onlineimage" height="514" width="506"/>
+        </media>
+      </figure>
+      <para id="id1167693385648"> As can be seen from the figure above, (a) shows the frequency domain representation of the signal to be transmitted, (b) shows the upsampled version of the frequency response, and upon low pass filtering the upsampled signal we get only two spikes. When the signal is modulated to the carrier frequency, both spikes appear at the corresponding carrier frequency in (c). This is important because we don't want information to be spread across the frequency spectrum, rather we want to transmit the signal at a specific carrier frequency. </para>
+      <para id="id1167695312813"> The upsampling process is accomplished by taking a signal, inserting L zeros between each sample and then low pass filtering the result. Below is a description of possible low pass filters that can be used to achieve this result. </para>
+    </section>
+    <section id="id1167695305312">
+      <title>Raised Cosine Filter</title>
+      <para id="id1167697217961"> The raised cosine filter is a type of low pass filter that accomplishes the interpolation necessary after inserting the L zeros between each sample. It's frequency response is given by:</para>
+      <figure id="id1167693002099">
+        <media id="id1167693002099_media" alt="">
+          <image mime-type="image/png" src="../../media/graphics2.png" id="id1167693002099__onlineimage" height="136" width="570"/>
+        </media>
+      </figure>
+      <para id="id6827271"> In the filter α is a parameter which is between 0 and 1 and is called the rolloff factor. The larger α is, the wider the bandwidth of the filter. As α approaches zero the filter will become a brick wall and will look like a box in the frequency domain. The Impulse response of the filter is shown in the figure below:</para>
+      <figure id="id1167694667053">
+        <media id="id1167694667053_media" alt="">
+          <image mime-type="image/jpg" src="../../media/graphics3-7439.jpg" id="id1167694667053__onlineimage" height="438" width="584"/>
+        </media>
+      </figure>
+      <para id="id1167707792926">As can be seen above, the time domain representation is given by a sinc and so in reality the raised cosine filter would extend to plus and minus infinity. However, above the impulse response was truncated and selected to have a length of 41 for the purposes of our digital communication scheme. The raised cosine filter is the best filter for digital communication, specifically 16 QAM, because it removes interference that may occur from one symbol to the next. This means that the waveform can be recovered perfectly at the receiver and this is why the raised cosine filter is typically used in digital communication. </para>
+      <para id="id7763916"> In order to complete the upsampling process it is necessary to convolve the impulse response of the raised cosine filter and the vector that contains the signal with zeros inserted between the samples. The output of this convolution will be the upsampled signal. Below is the output of the real part of a [1 0 1 0] sequence convolved with the raised cosine filter. </para>
+      <figure id="id1167695411539">
+        <media id="id1167695411539_media" alt="">
+          <image mime-type="image/jpg" src="../../media/graphics4-de2d.jpg" id="id1167695411539__onlineimage" height="438" width="584"/>
+        </media>
+      </figure>
+      <para id="id1167697345486"> As can be seen above, the absolute value of the maximum value is -3. This is because the first two bits, [1 0] correspond to the real part of the sequence and they get mapped to a value of I=-3. Below is the imaginary part of the signal, and as we can see the absolute value of the maximum value is 1. This is because the last to bits, [1 0] correspond to the imaginary part of the sequence and they get mapped to a value of Q=1.</para>
+      <para id="id7661484">
+        <figure id="id1167695417575">
+          <media id="id1167695417575_media" alt="">
+            <image mime-type="image/jpg" src="../../media/graphics5-b17f.jpg" id="id1167695417575__onlineimage" height="438" width="584"/>
+          </media>
+        </figure>
+      </para>
+      <para id="id1167696366749"> The raised cosine filter is used because it limits the bandwidth of the signal and decays quickly in the time domain. The advantages of this is that it allows for data transmission in specific frequency ranges with an insignificant amount of information spread out across large frequencies.</para>
+    </section>
+    <section id="id1167702336433">
+      <title>Butterworth Filter</title>
+      <para id="id1167705901369"> Butterworth filters are another type of low pass filter which can be used to complete the upsampling process. The frequency response of the Butterworth filter is given by:</para>
+      <equation id="id1167694757417">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mstyle fontsize="12pt">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi fontstyle="italic">jω</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:msqrt>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mn>1</m:mn>
+                              <m:mo stretchy="false">+</m:mo>
+                              <m:mo stretchy="false">(</m:mo>
+                            </m:mrow>
+                            <m:mfrac>
+                              <m:mi>ω</m:mi>
+                              <m:msub>
+                                <m:mi>ω</m:mi>
+                                <m:mstyle fontsize="8pt">
+                                  <m:mrow>
+                                    <m:mi>c</m:mi>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:msub>
+                            </m:mfrac>
+                            <m:msup>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mn>2N</m:mn>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msup>
+                          </m:mrow>
+                        </m:msqrt>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mstyle>
+              <m:mrow/>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0"> size 12{H \( jω \) = {  {1}  over  { sqrt {1+ \(  {  {ω}  over  {ω rSub { size 8{c} } } }  \)  rSup { size 8{2N} } } } } } {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </equation>
+      <para id="id1167694787276"> Where N is a parameter which is called the order of the filter and ω<sub>c</sub> is the cutoff frequency. The Butterworth filter acts like a low pass filter because it has a flat frequency response that is usually unity gain in the passband and gradually rolls off to zero in the stopband. In between the passband and the stop band we have the cutoff frequency which will occur at the point where the gain is equal to 0.707 (1/sqrt(2)). Butterworth filters have a relatively slow roll off, especially when compared to the raised cosine filter. Below is the impulse response of the Butterworth filter:</para>
+      <figure id="id1167695269440">
+        <media id="id1167695269440_media" alt="">
+          <image mime-type="image/jpg" src="../../media/graphics6-5b08.jpg" id="id1167695269440__onlineimage" height="438" width="584"/>
+        </media>
+      </figure>
+      <para id="id1167695304546"> Given a sequence of [1 0 1 0] the output of the low pass filtering of the real part of the signal will be:</para>
+      <para id="id4893345">
+        <figure id="id1167695427862">
+          <media id="id1167695427862_media" alt="">
+            <image mime-type="image/jpg" src="../../media/graphics7-9f74.jpg" id="id1167695427862__onlineimage" height="438" width="584"/>
+          </media>
+        </figure>
+      </para>
+      <para id="id1167704026331"> The output of low pass filtering the imaginary part of the signal with a Butterworth filter will be:</para>
+      <para id="id1167695306775">
+        <figure id="id1167695418289">
+          <media id="id1167695418289_media" alt="">
+            <image mime-type="image/jpg" src="../../media/graphics8.jpg" id="id1167695418289__onlineimage" height="438" width="584"/>
+          </media>
+        </figure>
+      </para>
+      <para id="id1167695429409"> As can be seen the output of the Butterworth filter is similar to that of the raised cosine filter, where both map the real part of the sequence to -3 and the imaginary part of the sequence to 1. The main difference is that the raised cosine filter's output has ripples extending on both sides, while the Butterworth filter does not. This means that the Butterworth filter's output does not need to be truncated since it does not extend to infinity like the output of the raised cosine filter does. The output of these filters would then be modulated appropriately as described, summed together and then transmitted through the channel as described in the QAM module.</para>
+    </section>
+  </content>
+</document>

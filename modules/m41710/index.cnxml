@@ -1,0 +1,51 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Results</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m41710</md:content-id>
+  <md:title>Results</md:title>
+  <md:abstract/>
+  <md:uuid>284deba3-ac8d-4756-8a7a-89ccac494b67</md:uuid>
+</metadata>
+
+<content>
+    <section id="id1169699356874">
+      <title>Results</title>
+      <para id="id1169699935922">Our goal in digital communications was to transmit a grayscale image shown below:</para>
+      <figure id="id1169692722681">
+        <media id="id1169692722681_media" alt="">
+          <image mime-type="image/jpg" src="../../media/Picture 1.jpg" id="id1169692722681__onlineimage" height="575" width="650"/>
+        </media>
+      </figure>
+      <para id="id1169704730378">This image was represented as a matrix with dimensions 512x512 with each entry having values from 0 to 255. The values from 0 to 255 in each entry of the matrix were taken, converted into a string of 0s and 1s and fed in four bits at a time into the 16 QAM modulator. This was then passed through a noisy channel which added an error of random numbers between -2.5 to 2.5 to the transmitted signal. The receiver collected the received signal, demodulated it and reconstructed the received image with noise. This was done with a raised cosine filter, a Butterworth filter and with no filter at all. We also compared the bit error with the original image for the raised cosine filter and the Butterworth filter. Below is the image received with noise using a raised cosine filter in the modulation phase:</para>
+      <para id="id8341151">
+        <figure id="id1169698905782">
+          <media id="id1169698905782_media" alt="">
+            <image mime-type="image/jpg" src="../../media/Picture 0.jpg" id="id1169698905782__onlineimage" height="575" width="650"/>
+          </media>
+        </figure>
+      </para>
+      <para id="id1169699337821">Using the Butterworth filter in the modulation phase the received image with noise was:</para>
+      <para id="id7644971">
+        <figure id="id1169704017026">
+          <media id="id1169704017026_media" alt="">
+            <image mime-type="image/jpg" src="../../media/Picture 2.jpg" id="id1169704017026__onlineimage" height="575" width="650"/>
+          </media>
+        </figure>
+      </para>
+      <para id="id1169708607124">Using no filter at all during the modulation scheme the received image was:</para>
+      <para id="id1169711992572">
+        <figure id="id1169691661237">
+          <media id="id1169691661237_media" alt="">
+            <image mime-type="image/jpg" src="../../media/Picture 3.jpg" id="id1169691661237__onlineimage" height="574" width="650"/>
+          </media>
+        </figure>
+      </para>
+    </section>
+    <section id="id1169692826365">
+      <title>Error Calculations and Filter Evaluations</title>
+      
+      <para id="id1169690890126">The bit error was calculated by analyzing the bit-representation of the original grayscale image and comparing it the bit-representation of the received image. The percentage of incorrect bits was calculated to be 34.55% when using the raised cosine filter, and 34.45% when using the Butterworth filter. From these results we can see that the performance of the Butterworth filter and the raised cosine filter are about the same, with the Butterworth filter performing slightly better. The bit error in the received image using no filter was 47%, however, percent error for the number of incorrect grayscale pixels was calculated to be 99%. The percent error for the number of incorrect grayscale pixels using the Butterworth filter was 95.64%. The percent error for the number of incorrect grayscale pixels using the raised cosine filter was 95.66%. This is high because this includes even the slightest error which might be indistinguishable to the human eye.</para>
+      <para id="id1169700495034"> We can also see the importance of using filters in the upsampling stage of the modulation phase of the digital communication scheme by looking at the received image without the use of a filter. The use of a digital filter allows the image to be recovered with far greater accuracy. </para>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,17 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Motivation</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m41717</md:content-id>
+  <md:title>Motivation</md:title>
+  <md:abstract/>
+  <md:uuid>56fe07d9-8264-43d1-8528-0b28300dbd87</md:uuid>
+</metadata>
+
+<content>
+    <section id="id1167699568986">
+      <title>Motivation</title>
+      <para id="id1167702766138">Noise caused by the channel in digital communication can be catastrophic to a signal. In particular, noise can destroy an image and make it indistinguishable. As a result, some endeavor to reduce noise is necessary when transmitting digital images.</para>
+      <para id="id1167699956909"> We investigated the effects of upsampling with and without filtering as well as the effects of using different filters on the noise level of an image after being transmitted through a simulated channel.</para><para id="eip-64">The problem we will tackle in regard to this is the transmission of a gray-scale image. This image will be filtered before and after subjection to a noisy channel and the result will be analyzed.</para>
+    </section>
+  </content>
+</document>

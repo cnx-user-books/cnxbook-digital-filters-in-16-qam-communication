@@ -1,0 +1,22 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Future Work</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m41708</md:content-id>
+  <md:title>Future Work</md:title>
+  <md:abstract/>
+  <md:uuid>037fb746-f7e7-495d-9c15-0bb83b553e65</md:uuid>
+</metadata>
+
+<content>
+    <section id="id1168113418708">
+      <title>Future Work</title>
+      
+      
+      <para id="id1168114106638">Our work utilized, but did not rigorously analyze, multiple digital filters. Future students could build upon our work by computing SNRs of more types of filters, mathematically determining which provide the least errors.
+</para><para id="eip-894">Not all noise is the same; there are many models of channel noise. Future work could investigate how each of the proposed digital filters handle different types of noise, and conclude which filter behaves best for a given channel type. </para><para id="eip-741">Our project does not attempt to eliminate the noise once it has been introduced. Error-correcting codes could be implemented to further reduce the effects of noise on the transmitted signal.</para>
+      
+    </section>
+    
+    
+  </content>
+</document>

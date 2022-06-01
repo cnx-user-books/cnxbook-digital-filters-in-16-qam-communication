@@ -1,0 +1,604 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Quadrature Amplitude Modulation (QAM)</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m41714</md:content-id>
+  <md:title>Quadrature Amplitude Modulation (QAM)</md:title>
+  <md:abstract/>
+  <md:uuid>614f6e29-e519-49c7-86f7-1567c5619c37</md:uuid>
+</metadata>
+
+<content>
+    <section id="id1167573510191">
+      <title>Quadrature Amplitude Modulation (QAM)</title>
+      <para id="id1167575862145"> All signal communications must adhere to frequency restrictions so that they can be received without interference. This gives rise to the notion of carrier modulation, where a baseband signal is moved to an unoccupied section of the frequency domain before transmission. This is also known as frequency modulation. This also simultaneously addresses the issue that low-frequency signals suffer greatly from attenuation during transmission through a medium.</para>
+      <para id="id1167572399943"> In order to transmit digital information, symbols are needed to represent the bits. The simplest set is known as BPSK, which consists of just two symbols; one represents 0, while the other represents 1. The baud rate in this case is only one; more complicated methods are necessary if we wish to improve upon this. While there are many types of modulation of varying complexity, we will focus on one of the popular methods known as 16-Quadrature Amplitude Modulation (16-QAM).</para>
+      <para id="id1167565591041"> 16-QAM utilizes both amplitude and phase alterations in conjunction with frequency modulation in a way that allows each symbol to represent four bits rather than just one. This increase in baud rate comes at the cost of design complexity and cost. The transmitter must send two signals simultaneously; in order to do this in a way that the signals can be separated by the receiver, the two signals must be orthogonal to each other. This is implemented via the frequency modulation, except one signal is modulated by a cosine and the other a sine. Thus, the output s(t) can be defined as</para>
+      <equation id="id2535637">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mstyle fontsize="12pt">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mi>s</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mi>I</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mtext>cos</m:mtext>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mn>2πf</m:mn>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>c</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">−</m:mo>
+                      <m:mi>Q</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mtext>sin</m:mtext>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mn>2πf</m:mn>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mi>c</m:mi>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mstyle>
+              <m:mrow/>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0"> size 12{s \( t \) =I \( t \) "cos" \( 2πf rSub { size 8{c} } t \)  - Q \( t \) "sin" \( 2πf rSub { size 8{c} } t \) } {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </equation>
+      <para id="id1167572443098"> The first signal is known as the in-phase component, while the other is known as the quadrature component. The fact that </para>
+      <para id="id1167576780553">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mstyle fontsize="12pt">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mtext>cos</m:mtext>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi fontstyle="italic">ωt</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">⋅</m:mo>
+                      <m:mtext>sin</m:mtext>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi fontstyle="italic">ωt</m:mi>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mrow>
+                          <m:munderover>
+                            <m:mo stretchy="false">∫</m:mo>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mn>0</m:mn>
+                              </m:mrow>
+                            </m:mstyle>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mn>2πk</m:mn>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:munderover>
+                          <m:mrow>
+                            <m:mtext>cos</m:mtext>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi fontstyle="italic">ωt</m:mi>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mtext>sin</m:mtext>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi fontstyle="italic">ωt</m:mi>
+                            <m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mo stretchy="false">∗</m:mo>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>dt</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mn>0,</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo stretchy="false">∈</m:mo>
+                      <m:mi>Z</m:mi>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mstyle>
+              <m:mrow/>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0"> size 12{"cos" \( ωt \)  cdot "sin" \( ωt \) = Int cSub { size 8{0} }  cSup { size 8{2πk} }  {"cos" \( ωt \) "sin" \( ωt \) * ital "dt"} =0,k in Z} {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="id8757312"> implies the signals' orthogonality. Multiplication by these sinusoids, via properties of the Fourier Transform, centers the frequency representation of the signal around plus and minus f<sub>c</sub> rather than at baseband.</para>
+      <figure id="id1167572121430">
+        <media id="id1167572121430_media" alt="">
+          <image mime-type="image/jpg" src="../../media/graphics1-38df.jpg" id="id1167572121430__onlineimage" height="284" width="456"/>
+        </media>
+      </figure>
+      <para id="id1167560643836">
+        <figure id="id1167572244710">
+          <media id="id1167572244710_media" alt="">
+            <image mime-type="image/jpg" src="../../media/graphics2-a4c8.jpg" id="id1167572244710__onlineimage" height="249" width="607"/>
+          </media>
+        </figure>
+      </para>
+      <para id="id1167574617331"> The various amplitudes paired with the two phases can be succinctly represented by a constellation map as shown below. </para>
+      <figure id="id1167576290761">
+        <media id="id1167576290761_media" alt="">
+          <image mime-type="image/jpg" src="../../media/graphics3-da8c.jpg" id="id1167576290761__onlineimage" height="356" width="428"/>
+        </media>
+      </figure>
+      <para id="id1167572953866"> Each point corresponds to a particular pair of amplitudes of the two signals. To combat the effects of noise, the points of the constellation are placed as far away from each other as possible so avoid misinterpretation. Many constellation configurations can be used; ours is described below:</para>
+      <table id="id1167556481276" summary="">
+        <tgroup cols="3">
+          <colspec colnum="1" colname="c1"/>
+          <colspec colnum="2" colname="c2"/>
+          <colspec colnum="3" colname="c3"/>
+          <tbody>
+            <row>
+              <entry>Bits</entry>
+              <entry>
+                <emphasis effect="bold">I(t)</emphasis>
+              </entry>
+              <entry>
+                <emphasis effect="bold">Q(t)</emphasis>
+              </entry>
+            </row>
+            <row>
+              <entry>0001</entry>
+              <entry>1</entry>
+              <entry>1</entry>
+            </row>
+            <row>
+              <entry>0010</entry>
+              <entry>3</entry>
+              <entry>1</entry>
+            </row>
+            <row>
+              <entry>0011</entry>
+              <entry>1</entry>
+              <entry>3</entry>
+            </row>
+            <row>
+              <entry>0100</entry>
+              <entry>3</entry>
+              <entry>3</entry>
+            </row>
+            <row>
+              <entry>0101</entry>
+              <entry>1</entry>
+              <entry>-1</entry>
+            </row>
+            <row>
+              <entry>0110</entry>
+              <entry>1</entry>
+              <entry>-3</entry>
+            </row>
+            <row>
+              <entry>0111</entry>
+              <entry>3</entry>
+              <entry>-1</entry>
+            </row>
+            <row>
+              <entry>1000</entry>
+              <entry>3</entry>
+              <entry>-3</entry>
+            </row>
+            <row>
+              <entry>1001</entry>
+              <entry>-1</entry>
+              <entry>1</entry>
+            </row>
+            <row>
+              <entry>1010</entry>
+              <entry>-1</entry>
+              <entry>3</entry>
+            </row>
+            <row>
+              <entry>1011</entry>
+              <entry>-3</entry>
+              <entry>1</entry>
+            </row>
+            <row>
+              <entry>1101</entry>
+              <entry>-3</entry>
+              <entry>3</entry>
+            </row>
+            <row>
+              <entry>1110</entry>
+              <entry>-1</entry>
+              <entry>-1</entry>
+            </row>
+            <row>
+              <entry>1111</entry>
+              <entry>-3</entry>
+              <entry>-1</entry>
+            </row>
+            <row>
+              <entry>1110</entry>
+              <entry>-1</entry>
+              <entry>-3</entry>
+            </row>
+            <row>
+              <entry>1111</entry>
+              <entry>-3</entry>
+              <entry>-3</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para id="id8861458"> In order to correctly interpret the data from r(t), the received signal s(t) with the addition of white noise after it passes through the channel, the receiver must recover I(t) and Q(t). I(t) is obtained by modulating s(t) by a cosine of identical frequency and phase as the original modulation, while Q(t) is obtained in the same way but with a sine instead. A low-pass filter will then yield the original signal, as the following equations illustrate:</para>
+      <equation id="id8289065">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mstyle fontsize="12pt">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mi>r</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mi>I</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mtext>cos</m:mtext>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi fontstyle="italic">ωt</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">+</m:mo>
+                      <m:mi>Q</m:mi>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mtext>sin</m:mtext>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi fontstyle="italic">ωt</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mstyle>
+              <m:mrow/>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0"> size 12{r \( t \) =I \( t \) "cos" \( ωt \) +Q \( t \) "sin" \( ωt \) } {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </equation>
+      <equation id="id1167555673053">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mrow>
+                <m:mtable>
+                  <m:mtr>
+                    <m:mrow>
+                      <m:mstyle fontsize="12pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:msub>
+                              <m:mi>I</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mstyle fontstyle="italic">
+                                    <m:mrow>
+                                      <m:mtext>rcvd</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi>t</m:mi>
+                            <m:mrow>
+                              <m:mo stretchy="false">)</m:mo>
+                              <m:mo stretchy="false">=</m:mo>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>LPF</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mi>r</m:mi>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi>t</m:mi>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mtext>cos</m:mtext>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi fontstyle="italic">ωt</m:mi>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">]</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mrow/>
+                    </m:mrow>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>I</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>rcvd</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>LPF</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>I</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:msup>
+                        <m:mtext>cos</m:mtext>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msup>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi fontstyle="italic">ωt</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mi>Q</m:mi>
+                      </m:mrow>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mtext>sin</m:mtext>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi fontstyle="italic">ωt</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mtext>cos</m:mtext>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi fontstyle="italic">ωt</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:mrow/>
+                    </m:mrow>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>I</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>rcvd</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>LPF</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:mrow>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                      <m:mi>I</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mtext>cos</m:mtext>
+                      </m:mrow>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mn>2ωt</m:mn>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mn>2</m:mn>
+                        </m:mfrac>
+                      </m:mrow>
+                      <m:mi>Q</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mtext>sin</m:mtext>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mn>2ωt</m:mn>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:mrow/>
+                    </m:mrow>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>I</m:mi>
+                        <m:mstyle fontsize="8pt">
+                          <m:mrow>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>rcvd</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:mrow>
+                        </m:mstyle>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mi>I</m:mi>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mi>t</m:mi>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mfrac>
+                      </m:mrow>
+                      <m:mrow/>
+                    </m:mrow>
+                  </m:mtr>
+                </m:mtable>
+                <m:mrow/>
+              </m:mrow>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0">alignl { stack {
+ size 12{I rSub { size 8{ ital "rcvd"} }  \( t \) = ital "LPF" \[ r \( t \) "cos" \( ωt \)  \] }  {} # 
+I rSub { size 8{ ital "rcvd"} }  \( t \) = ital "LPF" \[ I \( t \) "cos" rSup { size 8{2} }  \( ωt \) +Q \( t \) "sin" \( ωt \) "cos" \( ωt \)  \]  {} # 
+I rSub { size 8{ ital "rcvd"} }  \( t \) = ital "LPF" \[  {  {1}  over  {2} } I \( t \)  \( 1+"cos" \( 2ωt \)  \) + {  {1}  over  {2} } Q \( t \) "sin" \( 2ωt \)  \]  {} # 
+I rSub { size 8{ ital "rcvd"} }  \( t \) = {  {I \( t \) }  over  {2} }  {} 
+} } {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </equation>
+      <para id="id1167572330837"> The low-pass filter removes the components of frequency 2ω, leaving only a baseband signal. A similar approach shows that indeed</para>
+      <equation id="id1167556507202">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mstyle fontsize="12pt">
+                <m:mrow>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>Q</m:mi>
+                      <m:mstyle fontsize="8pt">
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>rcvd</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mrow>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mstyle fontstyle="italic">
+                        <m:mrow>
+                          <m:mtext>LPF</m:mtext>
+                        </m:mrow>
+                      </m:mstyle>
+                    </m:mrow>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>r</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mtext>sin</m:mtext>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi fontstyle="italic">ωt</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mrow>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mi>Q</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mstyle>
+              <m:mrow/>
+            </m:mrow>
+            <m:annotation encoding="StarMath 5.0"> size 12{Q rSub { size 8{ ital "rcvd"} }  \( t \) = ital "LPF" \[ r \( t \) "sin" \( ωt \)  \] = {  {Q \( t \) }  over  {2} } } {}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </equation>
+      <para id="id1167555938283"> Thus, both signals I(t) and Q(t) can successfully be recovered at the receiver. Below is the block diagram implementation of a transmitter using 16 QAM:</para>
+      <para id="id1167562230552">
+        <figure id="id1167562230610">
+          <media id="id1167562230610_media" alt="">
+            <image mime-type="image/jpg" src="../../media/graphics4-c198.jpg" id="id1167562230610__onlineimage" height="309" width="692"/>
+          </media>
+        </figure>
+      </para>
+      <para id="id1167555941947">Below is the block diagram implementation of a receiver using 16 QAM:</para>
+      <figure id="id1167562230842">
+        <media id="id1167562230842_media" alt="">
+          <image mime-type="image/jpg" src="../../media/graphics5-b6db.jpg" id="id1167562230842__onlineimage" height="279" width="692"/>
+        </media>
+      </figure>
+    </section>
+  </content>
+</document>

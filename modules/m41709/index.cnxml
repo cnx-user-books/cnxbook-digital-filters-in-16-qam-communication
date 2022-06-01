@@ -1,0 +1,15 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Code for Digital Communication in MATLAB</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m41709</md:content-id>
+  <md:title>Code for Digital Communication in MATLAB</md:title>
+  <md:abstract/>
+  <md:uuid>cd3cbb7e-97c8-4365-9d25-30d4b98f89ac</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me">Attached are the functions which were written to simulate 16 QAM, construct the filters and  transmit the image. All cases require the decimal to binary converters and binary to decimal converters and noise (these function are called in the other examples given below):d2b, b2d, channela. For the Raised Cosine Filter use:constructnew, demodcn, imagegray, imagebw. For the Butterworth filter use:constructnewb, demodcn, imagegrayb, For no filter use: constructnewn, demodcn, imagegrayn.</para><para id="eip-221"><link resource="d2b.m"> d2b</link></para><para id="eip-281"><link resource="b2d.m"> b2d</link></para><para id="eip-767"><link resource="constructnew.m"> modulator with noise rcf</link></para><para id="eip-513"><link resource="constructnewb.m"> modulator with noise bwf</link></para><para id="eip-433"><link resource="constructnewn.m"> modulator with noise nf</link></para><para id="eip-49"><link resource="demodcn.m"> demodulator </link></para><para id="eip-183"><link resource="imagegray.m"> image simulator rcf</link></para><para id="eip-611"><link resource="imagegrayb.m"> image simulator bwf</link></para><para id="eip-508"><link resource="imagegrayn.m"> image simulator nf</link></para><para id="eip-632"><link resource="imagebw.m"> image simulator rcf bw</link></para><para id="eip-597"><link resource="channela.m"> channel noise</link></para>
+</content>
+
+</document>
