@@ -1,54 +1,19 @@
-<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en">
+<?xml version="1.0"?>
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" authors="Eric Palmgren ,Fabio Ussher ,Samuel Whisler ,Joel Yin">
   <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
-  <md:content-id>col11384</md:content-id>
-  <md:title>Digital Filters in 16-QAM Communication</md:title>
-  
-  
-  <md:license url="http://creativecommons.org/licenses/by/3.0/"/>
-  <md:language>en</md:language>
-
-  
-
-  
-  
-  
-  
-  
-
-  <md:uuid>8cf22400-30de-4efe-bb7d-70548fda0e10</md:uuid>
-<md:slug>digital-filters-in-16-qam-communication</md:slug>
-</metadata>
-
+    <md:content-id>col11384</md:content-id>
+    <md:title>Digital Filters in 16-QAM Communication</md:title>
+    <md:license url="http://creativecommons.org/licenses/by/3.0/"/>
+    <md:language>en</md:language>
+    <md:uuid>8cf22400-30de-4efe-bb7d-70548fda0e10</md:uuid>
+    <md:slug>digital-filters-in-16-qam-communication</md:slug>
+  </metadata>
   <col:content>
-    
-      <col:module document="m41717"/>
-        
-      
-    
-    
-      <col:module document="m41714"/>
-        
-      
-    
-    
-      <col:module document="m41715"/>
-        
-      
-    
-    
-      <col:module document="m41710"/>
-        
-      
-    
-    
-      <col:module document="m41709"/>
-        
-      
-    
-    
-      <col:module document="m41708"/>
-        
-      
-    
+    <col:module document="m41717"/>
+    <col:module document="m41714"/>
+    <col:module document="m41715"/>
+    <col:module document="m41710"/>
+    <col:module document="m41709"/>
+    <col:module document="m41708"/>
   </col:content>
 </col:collection>
